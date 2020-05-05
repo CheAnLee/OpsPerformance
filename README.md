@@ -12,8 +12,8 @@ NEON is supported in A53 and SIMD can help on the performance. The size of regis
 2. Double Precision (64-bit): 2 number at once.
 
 ## Result
-
 ![Screenshot](https://github.com/CheAnLee/OpsPerformance/blob/master/picture/FL_benchmark_A53.png)
+![Screenshot](https://github.com/CheAnLee/OpsPerformance/blob/master/picture/FL_benchmark_A53_1.png)
 
 ## Reference
 ARM NEON:

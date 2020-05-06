@@ -4,19 +4,18 @@
 #include <time.h>
 #include <float.h>
 #include <math.h>
+#include <limits.h>
 
-#define N 4
+#define N 1500
 
-/*
-void showM(float m[N*N]){
+void showM(int m[N*N]){
 	for (int i=0; i<N*N; i++)
 	{
-		printf("%g ", m[i]);
+		printf("%d ", m[i]);
 		if (i%N == N-1)
 			printf("\n");
 	}
 }
-*/
 
 int main(int argc, char ** argv){
 	int a[N*N] = {0};
@@ -25,11 +24,11 @@ int main(int argc, char ** argv){
 	int sum;
 
 	//printf("-> %f \n", pow(10,log10(FLT_MAX)/2));
-	int MAX = pow(10,log10(INT_MAX)/2);
+	long MAX = pow(10,log10(((long)INT_MAX-INT_MIN))/2);
 	srand(time(NULL));
 	for (int i=0; i<N*N; i++) {
-		a[i]=(((float)rand()-RAND_MAX/2)/(RAND_MAX))*MAX;
-		b[i]=(((float)rand()-RAND_MAX/2)/(RAND_MAX))*MAX;
+		a[i]=((rand()-RAND_MAX/2.)/RAND_MAX)*MAX;
+		b[i]=((rand()-RAND_MAX/2.)/RAND_MAX)*MAX;
 	}
 
 	struct timeval stime, etime;
@@ -52,12 +51,14 @@ int main(int argc, char ** argv){
 	gettimeofday(&etime, NULL);
 	printf("=> %lu us\n", (etime.tv_sec-stime.tv_sec)*1000000+etime.tv_usec-stime.tv_usec);
 
-	//printf("--- a ---\n");
-	//showM (a);
-	//printf("--- b ---\n");
-//	showM (b);
-//	printf("--- c ---\n");
-//	showM (c);
+#ifdef DEBUG
+	printf("--- a ---\n");
+	showM (a);
+	printf("--- b ---\n");
+	showM (b);
+	printf("--- c ---\n");
+	showM (c);
+#endif
 
 	return 0;
 }

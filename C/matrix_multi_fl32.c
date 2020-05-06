@@ -5,7 +5,7 @@
 #include <float.h>
 #include <math.h>
 
-#define N 1500
+#define N 1000
 
 /*
 void showM(float m[N*N]){
